@@ -1,0 +1,31 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+  <div class="my-3 border-bottom">
+    <div>
+      <h4>지출 내역</h4>
+    </div>
+  </div>
+  <form th:action="@{/accountbook/expenditurelist}"  method="post">
+    <table class="table">
+      <thead class="table-dark">
+      <tr class="text-center">
+        <th>비용</th>
+        <th style="width:50%">날짜</th>
+        <th>카테고리</th>
+        <th>내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="text-center" th:each="expenditure : ${expenditure}">
+        <td class="text-start">
+          <a th:text="${expenditure.amount}"></a>
+        </td>
+        <td><span th:text="${expenditure.date}"></span></td>
+        <td th:text="${expenditure.category}"></td>
+        <td th:text="${expenditure.content}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+</html>

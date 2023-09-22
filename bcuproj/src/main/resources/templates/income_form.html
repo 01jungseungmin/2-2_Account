@@ -1,0 +1,34 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <div class="my-3 border-bottom">
+        <div>
+            <h4>수입</h4>
+        </div>
+    </div>
+    <form th:action="@{/accountbook/incoming}" th:object="${incomeForm}"  method="post">
+        <div th:replace="form_errors :: formErrorsFragment"></div>
+
+        <div class="mb-3">
+            <label for="amount" class="form-label">비용</label>
+            <input type="number" th:field="*{amount}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">날짜</label>
+            <input type="date" th:field="*{date}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <select name = "category">
+                <option value = "주수입" selected>주수입</option>
+                <option value = "부수입">부수입</option>
+                <option value = "전월이월">전월이월</option>
+                <option value = "저축/보험">저축/보험</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <input type="text" th:field="*{content}" id="content" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+    </form>
+</div>
+</html>
