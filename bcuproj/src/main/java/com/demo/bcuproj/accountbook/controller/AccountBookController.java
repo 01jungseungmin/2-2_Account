@@ -88,7 +88,9 @@ public class AccountBookController {
 
     @RequestMapping("/incomelist")
     public String list(Principal principal, Model model){
-
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
         SiteUser siteUser=this.userService.gettUser(principal.getName());
 
         model.addAttribute("income", incomeService.returnIncomeDB(siteUser));
@@ -98,6 +100,9 @@ public class AccountBookController {
 
     @RequestMapping("/expenditurelist")
     public String expenditurelist(Principal principal, Model model){
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
 
         SiteUser siteUser=this.userService.gettUser(principal.getName());
 
